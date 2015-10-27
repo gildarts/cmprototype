@@ -1,0 +1,14 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace FISCA.DSAUtil
+{
+    public class ServerFailException : Exception
+    {
+        public ServerFailException(string message, Exception InnerException)
+            : base(message, InnerException)
+        {
+        }
+    }
+}

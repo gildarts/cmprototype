@@ -1,0 +1,1 @@
+CREATE DATABASE "{0}" WITH OWNER = postgres Template "{1}";

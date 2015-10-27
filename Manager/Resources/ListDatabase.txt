@@ -1,0 +1,2 @@
+﻿select pg_database.oid,datname,description 
+from pg_database left join pg_shdescription on pg_database.oid=pg_shdescription.objoid

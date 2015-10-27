@@ -1,0 +1,4 @@
+select id,identity,log_time,dsa_application_name,dsa_contract_name,dsa_service_name,process_time,(exception!='') as occure_exception
+from log 
+where date_trunc('{0}',log_time)='{1}'  {2}
+order by log_time

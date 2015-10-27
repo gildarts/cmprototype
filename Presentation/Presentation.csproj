@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FFFD000F-83FD-4A3E-A46B-BAFDA5918A5C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FISCA.Presentation</RootNamespace>
+    <AssemblyName>FISCA.Presentation</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\FISCA.Presentation.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\FISCA.Presentation.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\BaseForm.cs" />
+    <Compile Include="Controls\BaseForm.designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MsgBox.cs" />
+    <Compile Include="DefaultPreferenceProvider.cs" />
+    <Compile Include="DivisionBarManager.cs" />
+    <Compile Include="DotNetBar\PrivateControl\InstallFonts.cs" />
+    <Compile Include="DotNetBar\PrivateControl\InstallFonts.Designer.cs">
+      <DependentUpon>InstallFonts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetBar\PrivateControl\CardPanelEx.cs" />
+    <Compile Include="DotNetBar\PrivateControl\DetailItemContainer.cs" />
+    <Compile Include="DotNetBar\PrivateControl\DetailPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DotNetBar\PrivateControl\DetailPane.Designer.cs">
+      <DependentUpon>DetailPane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetBar\PrivateControl\DotNetBarReferenceFixer.cs" />
+    <Compile Include="DotNetBar\PrivateControl\IMotherForm.cs" />
+    <Compile Include="DotNetBar\PrivateControl\NavContentPresentation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DotNetBar\PrivateControl\NavContentPresentation.Designer.cs">
+      <DependentUpon>NavContentPresentation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetBar\PrivateControl\PupopDetailPane.cs" />
+    <Compile Include="DotNetBar\PrivateControl\PupopDetailPane.Designer.cs">
+      <DependentUpon>PupopDetailPane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetBar\PrivateControl\RibbonBarFrame.cs" />
+    <Compile Include="DotNetBar\PrivateControl\BlankDivision.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DotNetBar\PrivateControl\BlankDivision.Designer.cs">
+      <DependentUpon>BlankDivision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetBar\PrivateControl\ThisIsAPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FontsChecker.cs" />
+    <Compile Include="IBlankPanel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="INCPanel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MenuButton.cs" />
+    <Compile Include="DotNetBar\PrivateControl\MotherForm.cs" />
+    <Compile Include="DotNetBar\PrivateControl\MotherForm.Designer.cs">
+      <DependentUpon>MotherForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuButtonControl.cs" />
+    <Compile Include="IPreferenceProvider.cs" />
+    <Compile Include="MenuButtonManager.cs" />
+    <Compile Include="MotherForm.cs" />
+    <Compile Include="DotNetBar\PrivateControl\NavContentDivision.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DotNetBar\PrivateControl\NavContentDivision.Designer.cs">
+      <DependentUpon>NavContentDivision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DescriptionPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DescriptionPane.Designer.cs">
+      <DependentUpon>DescriptionPane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DescriptionPaneBulider.cs" />
+    <Compile Include="DetailContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DetailContent.Designer.cs">
+      <DependentUpon>DetailContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailBulider.cs" />
+    <Compile Include="ListPaneField.cs" />
+    <Compile Include="NLDPanel.cs" />
+    <Compile Include="INavView.cs" />
+    <Compile Include="NavView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NavView.Designer.cs">
+      <DependentUpon>NavView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrimaryKeysCollection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DotNetBar\PrivateControl\InstallFonts.resx">
+      <DependentUpon>InstallFonts.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DotNetBar\PrivateControl\DetailPane.resx">
+      <DependentUpon>DetailPane.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DotNetBar\PrivateControl\MotherForm.resx">
+      <DependentUpon>MotherForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DotNetBar\PrivateControl\NavContentPresentation.resx">
+      <DependentUpon>NavContentPresentation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DotNetBar\PrivateControl\PupopDetailPane.resx">
+      <DependentUpon>PupopDetailPane.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DotNetBar\PrivateControl\NavContentDivision.resx">
+      <DependentUpon>NavContentDivision.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DotNetBar\PrivateControl\BlankDivision.resx">
+      <DependentUpon>BlankDivision.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DescriptionPane.resx">
+      <DependentUpon>DescriptionPane.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailContent.resx">
+      <DependentUpon>DetailContent.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NavView.resx">
+      <DependentUpon>NavView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NCPanel.resx">
+      <DependentUpon>NCPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlankPanel.resx">
+      <DependentUpon>BlankPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="RibbonBarButton.cs" />
+    <Compile Include="RibbonBarButtonManager.cs" />
+    <Compile Include="RibbonBarControlContainer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RibbonBarControlContainerManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RibbonBarItem.cs" />
+    <Compile Include="RibbonBarItemManager.cs" />
+    <Compile Include="SubPreferenceProvider.cs" />
+    <Compile Include="NCPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NCPanel.Designer.cs">
+      <DependentUpon>NCPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlankPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BlankPanel.Designer.cs">
+      <DependentUpon>BlankPanel.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MotherFormDiagram.cd" />
+    <None Include="Resources\Empty.png" />
+    <None Include="Resources\expandablebuttonimageexpand.png" />
+    <None Include="Resources\expandablebuttonimagecollapse.png" />
+    <None Include="Resources\removeFormTemp.Image.png" />
+    <None Include="Resources\buttonItem4.Image.png" />
+    <None Include="Resources\buttonItem1.Image.png" />
+    <None Include="Resources\btnSearch.Image.png" />
+    <None Include="Resources\addToTemp.Image.png" />
+    <None Include="Resources\Loading.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

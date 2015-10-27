@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+
+	<xs:element name="Request">
+		<xs:complexType>
+			<xs:sequence>
+				<!--不要把maxOccurs設成1，因為舊的程式也許會有TextNode，這樣會造成錯誤。-->
+				<xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+			</xs:sequence>
+			<xs:attribute use="required" name="ServiceName" type="xs:string"/>
+			<xs:attribute use="required" name="UserID" type="xs:string"/>
+			<xs:attribute use="required"  name="Password" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

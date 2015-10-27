@@ -1,0 +1,6 @@
+select date_trunc('{0}',log_time) as group_time,count(*) as pcount,avg(process_time) as avg_rsp_time,max(process_time) as max_rsp_time,min(process_time) as min_rsp_time,sum(process_time) as total_rsp_time
+from log
+{1}
+group by group_time
+order by {2}
+limit {3}

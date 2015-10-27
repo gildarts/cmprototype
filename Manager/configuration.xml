@@ -1,0 +1,6 @@
+﻿<Configuration>
+    <Group Title="高雄">
+        <Server AccessPoint="http://localhost:8080/is4/manager" UserName="admin" Password="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/HKEddz25Uew5XGAgDtTQQAAAAACAAAAAAAQZgAAAAEAACAAAACXaYbUOgk3Gy5zz/NNKlrgMAE7hoboH3fQHG3cqIMc7gAAAAAOgAAAAAIAACAAAAB5+RZ4BZ85jzSD4YPDO/ZeeaRIuo/IHmd4nqTNVK0UahAAAADPmTYJE83RGtRPa9+AGezYQAAAACFoASGrb5CXY6bfEPEE0aqOWEVr/YJdigXtSh/doUdygiLief2elTrZdLPebhhaqarJ3iWKnP3gxHFG4a0Emr4="></Server>
+        <Memo>高雄雲端中心。</Memo>
+    </Group>
+</Configuration>

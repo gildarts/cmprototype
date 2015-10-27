@@ -1,0 +1,89 @@
+<AdvTree>
+    <Node Expanded="true" Name="node1" Text="資料庫">
+        <Node Expanded="true" Name="node8" Text="Owner">
+            <Cells>
+                <Cell Text="pgsql" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+    </Node>
+
+    <Node Expanded="true" Name="node1" Text="資料庫綱目(Public Schema)">
+        <Node Expanded="true" Name="node8" Text="Owner">
+            <Cells>
+                <Cell Text="pgsql" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+        <Node Expanded="true" Name="node9" Text="ALL">
+            <Cells>
+                <Cell Text="SSchool_Admin" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+        <Node Expanded="true" Name="node9" Text="Usage">
+            <Cells>
+                <Cell Text="SSchool_User" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+    </Node>
+
+    <Node Expanded="true" Name="node1" Text="系統資料表">
+        <Node Expanded="true" Name="node8" Text="Owner">
+            <Cells>
+                <Cell Text="pgsql" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+        <Node Expanded="true" Name="node9" Text="ALL">
+            <Cells>
+                <Cell Text="SSchool_Admin" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+        <Node Expanded="true" Name="node9" Text="CRUD">
+            <Cells>
+                <Cell Text="SSchool_User" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+    </Node>
+
+    <Node Expanded="true" Name="node1" Text="使用者資料表(UDT)">
+        <Node Expanded="true" Name="node8" Text="Owner">
+            <Cells>
+                <Cell Text="SSchool_Admin" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+        <Node Expanded="true" Name="node9" Text="ALL">
+            <Cells>
+                <Cell Text="SSchool_Admin" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+        <Node Expanded="true" Name="node9" Text="CRUD">
+            <Cells>
+                <Cell Text="SSchool_User" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+    </Node>
+
+    <Node Expanded="true" Name="node1" Text="序列數(Sequence)">
+        <Node Expanded="true" Name="node8" Text="Owner">
+            <Cells>
+                <Cell Text="pgsql" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+        <Node Expanded="true" Name="node9" Text="Usage">
+            <Cells>
+                <Cell Text="SSchool_Admin,SSchool_User" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+    </Node>
+
+    <Node Expanded="true" Name="node1" Text="觸發器函數(Trigger)">
+        <Node Expanded="true" Name="node8" Text="Owner">
+            <Cells>
+                <Cell Text="pgsql" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+        <Node Expanded="true" Name="node9" Text="Execute">
+            <Cells>
+                <Cell Text="SSchool_Admin,SSchool_User" StyleNormalName="EditableStyle" StyleSelectedName="EditableStyleSelected"/>
+            </Cells>
+        </Node>
+    </Node>
+</AdvTree>

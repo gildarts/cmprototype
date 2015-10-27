@@ -1,8 +1,0 @@
-http://dsns1.ischool.com.tw/dsns/dsns
-http://dsns2.ischool.com.tw/dsns/dsns
-http://124.219.8.11/dsns/dsns
-http://203.72.205.3/dsns/dsns
-http://dsns-gae.appspot.com/dsns
-http://dsns.blazer.org.tw/commonserver/dsnameservice/accesspoint.dsa
-http://203.72.205.3/commonserver/dsnameservice/accesspoint.dsa
-http://124.219.8.3/commonserver/dsnameservice/accesspoint.dsa

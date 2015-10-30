@@ -23,14 +23,13 @@ namespace Manager
         public void Import()
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "*.xls|*.xls";
+            dialog.Filter = "*.xlsx|*.xlsx";
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    Workbook book = new Workbook();
-                    book.Open(dialog.FileName);
+                    Workbook book = new Workbook(dialog.FileName);
                     Worksheet sheet = book.Worksheets[0];
 
                     Dictionary<string, int> column = new Dictionary<string, int>();
@@ -48,6 +47,7 @@ namespace Manager
                         appinfo.DMLPassword = sheet.Cells[i, column["db_pwd"]].StringValue;
                         appinfo.DDLUser = sheet.Cells[i, column["db_udt_user"]].StringValue;
                         appinfo.DDLPassword = sheet.Cells[i, column["db_udt_pwd"]].StringValue;
+                        appinfo.SchoolCode = sheet.Cells[i, column["school_code"]].StringValue;
                         appinfo.Comment = sheet.Cells[i, column["app_comment"]].StringValue;
                         appinfo.TrySetEnabled(sheet.Cells[i, column["enabled"]].StringValue);
 
@@ -97,6 +97,7 @@ namespace Manager
                         appreq.AddElement(".", "Param", app.DMLPassword).SetAttribute("Name", "db_pwd");
                         appreq.AddElement(".", "Param", app.DDLUser).SetAttribute("Name", "db_udt_user");
                         appreq.AddElement(".", "Param", app.DDLPassword).SetAttribute("Name", "db_udt_pwd");
+                        appreq.AddElement(".", "Param", app.SchoolCode).SetAttribute("Name", "school_code");
                         appreq.AddElement(".", "Param", app.Comment).SetAttribute("Name", "app_comment");
                     }
                     Server.Manager.SetApplicationsArgument(req.GetElement("."));
@@ -133,6 +134,8 @@ namespace Manager
             public string DDLUser { get; set; }
 
             public string DDLPassword { get; set; }
+
+            public string SchoolCode { get; set; }
 
             public string Comment { get; set; }
 

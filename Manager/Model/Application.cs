@@ -31,6 +31,7 @@ namespace Manager
             DMLPassword = Definition.GetText("Property[@Name='Param']/Application/Param[@Name='db_pwd']");
             DDLUserName = Definition.GetText("Property[@Name='Param']/Application/Param[@Name='db_udt_user']");
             DDLPassword = Definition.GetText("Property[@Name='Param']/Application/Param[@Name='db_udt_pwd']");
+            SchoolCode = Definition.GetText("Property[@Name='Param']/Application/Param[@Name='school_code']");
             Comment = Definition.GetText("Property[@Name='Param']/Application/Param[@Name='app_comment']");
 
             if (string.Equals(Name, SharedName, StringComparison.OrdinalIgnoreCase))
@@ -73,6 +74,8 @@ namespace Manager
         /// </summary>
         public string Comment { get; private set; }
 
+        public string SchoolCode { get; private set; }
+
         public void RaiseNameChanged()
         {
             if (NameChanged != null) NameChanged(this, EventArgs.Empty);
@@ -91,6 +94,7 @@ namespace Manager
             arg.DMLPassword = DMLPassword;
             arg.DDLUserName = DDLUserName;
             arg.DDLPassword = DDLPassword;
+            arg.SchoolCode = SchoolCode;
             arg.Comment = Comment;
 
             return arg;
@@ -134,6 +138,8 @@ namespace Manager
 
             public string DDLPassword { get; set; }
 
+            public string SchoolCode { get; set; }
+
             public string Comment { get; set; }
 
             public void SetDatabaseName(string name)
@@ -162,6 +168,9 @@ namespace Manager
 
                 param = new FISCA.XHelper(helper.AddElement(".", "Param", DDLPassword));
                 param.SetAttribute(".", "Name", "db_udt_pwd");
+
+                param = new FISCA.XHelper(helper.AddElement(".", "Param", SchoolCode));
+                param.SetAttribute(".", "Name", "school_code");
 
                 param = new FISCA.XHelper(helper.AddElement(".", "Param", Comment));
                 param.SetAttribute(".", "Name", "app_comment");

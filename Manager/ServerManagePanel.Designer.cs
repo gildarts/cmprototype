@@ -30,13 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             ActiproSoftware.SyntaxEditor.Document document1 = new ActiproSoftware.SyntaxEditor.Document();
             ActiproSoftware.SyntaxEditor.VisualStudio2005SyntaxEditorRenderer visualStudio2005SyntaxEditorRenderer1 = new ActiproSoftware.SyntaxEditor.VisualStudio2005SyntaxEditorRenderer();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel5 = new DevComponents.DotNetBar.TabControlPanel();
             this.bar1 = new DevComponents.DotNetBar.Bar();
+            this.btnAddSchool = new DevComponents.DotNetBar.ButtonItem();
+            this.btnSetupDefaultSchool = new DevComponents.DotNetBar.ButtonItem();
+            this.btnListDatabase = new DevComponents.DotNetBar.ButtonItem();
+            this.btnDBWindow = new DevComponents.DotNetBar.ButtonItem();
+            this.btnImport = new DevComponents.DotNetBar.ButtonItem();
+            this.btnExport = new DevComponents.DotNetBar.ButtonItem();
             this.btnSetTemplate = new DevComponents.DotNetBar.ButtonItem();
             this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
             this.schoolManager = new DevComponents.DotNetBar.ButtonItem();
@@ -49,6 +55,7 @@
             this.mcRename = new DevComponents.DotNetBar.ButtonItem();
             this.btnSpecUpgrade = new DevComponents.DotNetBar.ButtonItem();
             this.btnExportApps = new DevComponents.DotNetBar.ButtonItem();
+            this.mcDelete = new DevComponents.DotNetBar.ButtonItem();
             this.btnRiskFeature = new DevComponents.DotNetBar.ButtonItem();
             this.btnDebugDB = new DevComponents.DotNetBar.ButtonItem();
             this.mc1RunSingleSql = new DevComponents.DotNetBar.ButtonItem();
@@ -94,7 +101,9 @@
             this.txtCoreLastUpate = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.txtLogEnabled = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.synMemo = new Manager.TextEditor.BaseSyntaxEditor();
             this.bar2 = new DevComponents.DotNetBar.Bar();
+            this.btnSaveConfig = new DevComponents.DotNetBar.ButtonItem();
             this.btnRawEdit = new DevComponents.DotNetBar.ButtonItem();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
@@ -136,15 +145,6 @@
             this.labelX21 = new DevComponents.DotNetBar.LabelX();
             this.txtTrafficFile = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tabItem1 = new DevComponents.DotNetBar.TabItem(this.components);
-            this.btnAddSchool = new DevComponents.DotNetBar.ButtonItem();
-            this.btnSetupDefaultSchool = new DevComponents.DotNetBar.ButtonItem();
-            this.btnListDatabase = new DevComponents.DotNetBar.ButtonItem();
-            this.btnDBWindow = new DevComponents.DotNetBar.ButtonItem();
-            this.btnImport = new DevComponents.DotNetBar.ButtonItem();
-            this.btnExport = new DevComponents.DotNetBar.ButtonItem();
-            this.mcDelete = new DevComponents.DotNetBar.ButtonItem();
-            this.btnSaveConfig = new DevComponents.DotNetBar.ButtonItem();
-            this.synMemo = new Manager.TextEditor.BaseSyntaxEditor();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabControlPanel5.SuspendLayout();
@@ -219,12 +219,59 @@
             this.btnSetTemplate});
             this.bar1.Location = new System.Drawing.Point(1, 1);
             this.bar1.Name = "bar1";
-            this.bar1.Size = new System.Drawing.Size(1022, 34);
+            this.bar1.Size = new System.Drawing.Size(1022, 35);
             this.bar1.Stretch = true;
             this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
             this.bar1.TabIndex = 9;
             this.bar1.TabStop = false;
             this.bar1.Text = "bar1";
+            // 
+            // btnAddSchool
+            // 
+            this.btnAddSchool.Image = global::Manager.Images.Add_Database_25;
+            this.btnAddSchool.Name = "btnAddSchool";
+            this.btnAddSchool.Text = "新增學校";
+            this.btnAddSchool.Tooltip = "新增學校";
+            this.btnAddSchool.Click += new System.EventHandler(this.btnAddApp_Click);
+            // 
+            // btnSetupDefaultSchool
+            // 
+            this.btnSetupDefaultSchool.Image = global::Manager.Images.Settings_25;
+            this.btnSetupDefaultSchool.Name = "btnSetupDefaultSchool";
+            this.btnSetupDefaultSchool.Text = "變更預設連線設定。";
+            this.btnSetupDefaultSchool.Tooltip = "變更預設連線設定，當建立新學校時會使用此預設值。";
+            this.btnSetupDefaultSchool.Click += new System.EventHandler(this.btnSetupDefaultSchool_Click);
+            // 
+            // btnListDatabase
+            // 
+            this.btnListDatabase.Image = global::Manager.Images.Database_25;
+            this.btnListDatabase.Name = "btnListDatabase";
+            this.btnListDatabase.Text = "資料庫清單";
+            this.btnListDatabase.Tooltip = "資料庫清單";
+            this.btnListDatabase.Click += new System.EventHandler(this.btnListDatabase_Click);
+            // 
+            // btnDBWindow
+            // 
+            this.btnDBWindow.Image = global::Manager.Images.SQL_25;
+            this.btnDBWindow.Name = "btnDBWindow";
+            this.btnDBWindow.Text = "DBWindow";
+            this.btnDBWindow.Tooltip = "SQL Command Window";
+            this.btnDBWindow.Visible = false;
+            this.btnDBWindow.Click += new System.EventHandler(this.btnDBWindow_Click);
+            // 
+            // btnImport
+            // 
+            this.btnImport.Image = global::Manager.Images.Import_26;
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Text = "匯入";
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Image = global::Manager.Images.Export_26;
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Text = "匯出";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnSetTemplate
             // 
@@ -321,7 +368,15 @@
             // 
             this.btnExportApps.Name = "btnExportApps";
             this.btnExportApps.Text = "匯出設定";
-            this.btnExportApps.Click += new System.EventHandler(this.btnExportApps_Click);
+            this.btnExportApps.Visible = false;
+            // 
+            // mcDelete
+            // 
+            this.mcDelete.BeginGroup = true;
+            this.mcDelete.Image = global::Manager.Images.Close;
+            this.mcDelete.Name = "mcDelete";
+            this.mcDelete.Text = "刪除學校";
+            this.mcDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnRiskFeature
             // 
@@ -1054,6 +1109,25 @@
             this.txtLogEnabled.TabIndex = 5;
             this.txtLogEnabled.Text = "是";
             // 
+            // synMemo
+            // 
+            this.synMemo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            document1.LexicalParsingEnabled = false;
+            document1.SemanticParsingEnabled = false;
+            this.synMemo.Document = document1;
+            this.synMemo.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.synMemo.IndicatorMarginVisible = false;
+            this.synMemo.Location = new System.Drawing.Point(12, 633);
+            this.synMemo.Name = "synMemo";
+            visualStudio2005SyntaxEditorRenderer1.ResetAllPropertiesOnSystemColorChange = false;
+            this.synMemo.Renderer = visualStudio2005SyntaxEditorRenderer1;
+            this.synMemo.ScrollBarType = ActiproSoftware.SyntaxEditor.ScrollBarType.Vertical;
+            this.synMemo.Size = new System.Drawing.Size(999, 98);
+            this.synMemo.TabIndex = 10;
+            this.synMemo.TextChanged += new System.EventHandler(this.synMemo_TextChanged);
+            // 
             // bar2
             // 
             this.bar2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1069,6 +1143,15 @@
             this.bar2.TabIndex = 20;
             this.bar2.TabStop = false;
             this.bar2.Text = "bar2";
+            // 
+            // btnSaveConfig
+            // 
+            this.btnSaveConfig.Enabled = false;
+            this.btnSaveConfig.Image = global::Manager.Images.Save;
+            this.btnSaveConfig.Name = "btnSaveConfig";
+            this.btnSaveConfig.Text = "buttonItem1";
+            this.btnSaveConfig.Visible = false;
+            this.btnSaveConfig.Click += new System.EventHandler(this.btnSaveConfig_Click);
             // 
             // btnRawEdit
             // 
@@ -1703,89 +1786,6 @@
             this.tabItem1.Name = "tabItem1";
             this.tabItem1.Text = "Traffic Diagnostics";
             this.tabItem1.Visible = false;
-            // 
-            // btnAddSchool
-            // 
-            this.btnAddSchool.Image = global::Manager.Images.Add_Database_25;
-            this.btnAddSchool.Name = "btnAddSchool";
-            this.btnAddSchool.Text = "新增學校";
-            this.btnAddSchool.Tooltip = "新增學校";
-            this.btnAddSchool.Click += new System.EventHandler(this.btnAddApp_Click);
-            // 
-            // btnSetupDefaultSchool
-            // 
-            this.btnSetupDefaultSchool.Image = global::Manager.Images.Settings_25;
-            this.btnSetupDefaultSchool.Name = "btnSetupDefaultSchool";
-            this.btnSetupDefaultSchool.Text = "變更預設連線設定。";
-            this.btnSetupDefaultSchool.Tooltip = "變更預設連線設定，當建立新學校時會使用此預設值。";
-            this.btnSetupDefaultSchool.Click += new System.EventHandler(this.btnSetupDefaultSchool_Click);
-            // 
-            // btnListDatabase
-            // 
-            this.btnListDatabase.Image = global::Manager.Images.Database_25;
-            this.btnListDatabase.Name = "btnListDatabase";
-            this.btnListDatabase.Text = "資料庫清單";
-            this.btnListDatabase.Tooltip = "資料庫清單";
-            this.btnListDatabase.Click += new System.EventHandler(this.btnListDatabase_Click);
-            // 
-            // btnDBWindow
-            // 
-            this.btnDBWindow.Image = global::Manager.Images.SQL_25;
-            this.btnDBWindow.Name = "btnDBWindow";
-            this.btnDBWindow.Text = "DBWindow";
-            this.btnDBWindow.Tooltip = "SQL Command Window";
-            this.btnDBWindow.Visible = false;
-            this.btnDBWindow.Click += new System.EventHandler(this.btnDBWindow_Click);
-            // 
-            // btnImport
-            // 
-            this.btnImport.Image = global::Manager.Images.Import_26;
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Text = "匯入";
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-            // 
-            // btnExport
-            // 
-            this.btnExport.Image = global::Manager.Images.Export_26;
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Text = "匯出";
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // mcDelete
-            // 
-            this.mcDelete.BeginGroup = true;
-            this.mcDelete.Image = global::Manager.Images.Close;
-            this.mcDelete.Name = "mcDelete";
-            this.mcDelete.Text = "刪除學校";
-            this.mcDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnSaveConfig
-            // 
-            this.btnSaveConfig.Enabled = false;
-            this.btnSaveConfig.Image = global::Manager.Images.Save;
-            this.btnSaveConfig.Name = "btnSaveConfig";
-            this.btnSaveConfig.Text = "buttonItem1";
-            this.btnSaveConfig.Visible = false;
-            this.btnSaveConfig.Click += new System.EventHandler(this.btnSaveConfig_Click);
-            // 
-            // synMemo
-            // 
-            this.synMemo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            document1.LexicalParsingEnabled = false;
-            document1.SemanticParsingEnabled = false;
-            this.synMemo.Document = document1;
-            this.synMemo.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.synMemo.IndicatorMarginVisible = false;
-            this.synMemo.Location = new System.Drawing.Point(12, 633);
-            this.synMemo.Name = "synMemo";
-            visualStudio2005SyntaxEditorRenderer1.ResetAllPropertiesOnSystemColorChange = false;
-            this.synMemo.Renderer = visualStudio2005SyntaxEditorRenderer1;
-            this.synMemo.ScrollBarType = ActiproSoftware.SyntaxEditor.ScrollBarType.Vertical;
-            this.synMemo.Size = new System.Drawing.Size(999, 98);
-            this.synMemo.TabIndex = 10;
-            this.synMemo.TextChanged += new System.EventHandler(this.synMemo_TextChanged);
             // 
             // ServerManagePanel
             // 

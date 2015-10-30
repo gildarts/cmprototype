@@ -1377,12 +1377,6 @@ namespace Manager
             }
         }
 
-        private void btnExportApps_Click(object sender, EventArgs e)
-        {
-            if (dgvSchoolManageList.SelectedRows.Count > 0)
-                new ServerManagePanel_ExportApplication(dgvSchoolManageList).ExportSelected();
-        }
-
         private void btnImport_Click(object sender, EventArgs e)
         {
             new ServerManagePanel_ImportApplication(dgvSchoolManageList, CurrentServer).Import();
@@ -1390,7 +1384,8 @@ namespace Manager
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-
+            if (dgvSchoolManageList.SelectedRows.Count > 0)
+                new ServerManagePanel_ExportApplication(dgvSchoolManageList).ExportSelected();
         }
 
         private void dgvSchoolManageList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

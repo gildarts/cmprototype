@@ -42,6 +42,7 @@ namespace Manager
                 sheet.Cells[0, column++].PutValue("db_pwd");
                 sheet.Cells[0, column++].PutValue("db_udt_user");
                 sheet.Cells[0, column++].PutValue("db_udt_pwd");
+                sheet.Cells[0, column++].PutValue("school_code");
                 sheet.Cells[0, column++].PutValue("app_comment");
                 sheet.Cells[0, column++].PutValue("enabled");
 
@@ -55,12 +56,13 @@ namespace Manager
                     sheet.Cells[row, column++].PutValue(app.DMLPassword);
                     sheet.Cells[row, column++].PutValue(app.DDLUserName);
                     sheet.Cells[row, column++].PutValue(app.DDLPassword);
+                    sheet.Cells[row, column++].PutValue(app.SchoolCode);
                     sheet.Cells[row, column++].PutValue(app.Comment);
                     sheet.Cells[row, column++].PutValue(app.Enabled);
                     row++;
                 }
 
-                book.Save(dialog.FileName, FileFormatType.Xlsx);
+                book.Save(dialog.FileName, SaveFormat.Xlsx);
             }
         }
     }

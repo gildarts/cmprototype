@@ -111,7 +111,7 @@
             this.DSATree.NodesConnector = this.nodeConnector1;
             this.DSATree.NodeStyle = this.elementStyle1;
             this.DSATree.PathSeparator = ";";
-            this.DSATree.Size = new System.Drawing.Size(259, 675);
+            this.DSATree.Size = new System.Drawing.Size(259, 676);
             this.DSATree.Styles.Add(this.elementStyle1);
             this.DSATree.TabIndex = 0;
             this.DSATree.Text = "advTree1";
@@ -156,7 +156,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 27);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 26);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -168,7 +168,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.contextMenuBar1);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(3);
-            this.splitContainer1.Size = new System.Drawing.Size(992, 681);
+            this.splitContainer1.Size = new System.Drawing.Size(992, 682);
             this.splitContainer1.SplitterDistance = 265;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -178,7 +178,7 @@
             this.TreeContextMenu});
             this.contextMenuBar1.Location = new System.Drawing.Point(63, 47);
             this.contextMenuBar1.Name = "contextMenuBar1";
-            this.contextMenuBar1.Size = new System.Drawing.Size(236, 27);
+            this.contextMenuBar1.Size = new System.Drawing.Size(236, 26);
             this.contextMenuBar1.Stretch = true;
             this.contextMenuBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             this.contextMenuBar1.TabIndex = 0;
@@ -329,9 +329,9 @@
             this.dockSite1.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.dockSite1.Dock = System.Windows.Forms.DockStyle.Left;
             this.dockSite1.DocumentDockContainer = new DevComponents.DotNetBar.DocumentDockContainer();
-            this.dockSite1.Location = new System.Drawing.Point(0, 27);
+            this.dockSite1.Location = new System.Drawing.Point(0, 26);
             this.dockSite1.Name = "dockSite1";
-            this.dockSite1.Size = new System.Drawing.Size(0, 681);
+            this.dockSite1.Size = new System.Drawing.Size(0, 682);
             this.dockSite1.TabIndex = 4;
             this.dockSite1.TabStop = false;
             // 
@@ -340,9 +340,9 @@
             this.dockSite2.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.dockSite2.Dock = System.Windows.Forms.DockStyle.Right;
             this.dockSite2.DocumentDockContainer = new DevComponents.DotNetBar.DocumentDockContainer();
-            this.dockSite2.Location = new System.Drawing.Point(992, 27);
+            this.dockSite2.Location = new System.Drawing.Point(992, 26);
             this.dockSite2.Name = "dockSite2";
-            this.dockSite2.Size = new System.Drawing.Size(0, 681);
+            this.dockSite2.Size = new System.Drawing.Size(0, 682);
             this.dockSite2.TabIndex = 5;
             this.dockSite2.TabStop = false;
             // 
@@ -360,9 +360,9 @@
             // 
             this.dockSite5.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.dockSite5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dockSite5.Location = new System.Drawing.Point(0, 27);
+            this.dockSite5.Location = new System.Drawing.Point(0, 26);
             this.dockSite5.Name = "dockSite5";
-            this.dockSite5.Size = new System.Drawing.Size(0, 703);
+            this.dockSite5.Size = new System.Drawing.Size(0, 704);
             this.dockSite5.TabIndex = 8;
             this.dockSite5.TabStop = false;
             // 
@@ -370,9 +370,9 @@
             // 
             this.dockSite6.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.dockSite6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dockSite6.Location = new System.Drawing.Point(992, 27);
+            this.dockSite6.Location = new System.Drawing.Point(992, 26);
             this.dockSite6.Name = "dockSite6";
-            this.dockSite6.Size = new System.Drawing.Size(0, 703);
+            this.dockSite6.Size = new System.Drawing.Size(0, 704);
             this.dockSite6.TabIndex = 9;
             this.dockSite6.TabStop = false;
             // 
@@ -383,7 +383,7 @@
             this.dockSite7.Dock = System.Windows.Forms.DockStyle.Top;
             this.dockSite7.Location = new System.Drawing.Point(0, 0);
             this.dockSite7.Name = "dockSite7";
-            this.dockSite7.Size = new System.Drawing.Size(992, 27);
+            this.dockSite7.Size = new System.Drawing.Size(992, 26);
             this.dockSite7.TabIndex = 10;
             this.dockSite7.TabStop = false;
             // 
@@ -401,7 +401,7 @@
             this.bar3.Location = new System.Drawing.Point(0, 0);
             this.bar3.MenuBar = true;
             this.bar3.Name = "bar3";
-            this.bar3.Size = new System.Drawing.Size(992, 26);
+            this.bar3.Size = new System.Drawing.Size(992, 25);
             this.bar3.Stretch = true;
             this.bar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             this.bar3.TabIndex = 0;
@@ -510,7 +510,7 @@
             this.dockSite3.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.dockSite3.Dock = System.Windows.Forms.DockStyle.Top;
             this.dockSite3.DocumentDockContainer = new DevComponents.DotNetBar.DocumentDockContainer();
-            this.dockSite3.Location = new System.Drawing.Point(0, 27);
+            this.dockSite3.Location = new System.Drawing.Point(0, 26);
             this.dockSite3.Name = "dockSite3";
             this.dockSite3.Size = new System.Drawing.Size(992, 0);
             this.dockSite3.TabIndex = 6;

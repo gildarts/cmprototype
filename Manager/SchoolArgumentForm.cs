@@ -30,31 +30,31 @@ namespace Manager
             txtDDLUserName.Text = School.DDLUserName;
             txtDDLPassword.Text = School.DDLPassword;
             txtMemo.Text = School.Comment;
-            txtDatabaseName.Text = School.DatabaseName;
+            txtDatabaseFullName.Text = School.DatabaseFullName;
 
-            AsyncRunner<object, List<Database>> runner = new AsyncRunner<object, List<Database>>();
-            runner.Run(
-                x =>
-                {
-                    runner.Result = School.Owner.Manager.ListDatabases();
-                },
-                x =>
-                {
-                    if (runner.Result == null) return;
+            //AsyncRunner<object, List<Database>> runner = new AsyncRunner<object, List<Database>>();
+            //runner.Run(
+            //    x =>
+            //    {
+            //        runner.Result = School.Owner.Manager.ListDatabases();
+            //    },
+            //    x =>
+            //    {
+            //        if (runner.Result == null) return;
 
-                    List<string> dbs = new List<string>(from each in runner.Result select each.Name);
-                    txtDatabaseName.AutoCompleteCustomSource.AddRange(dbs.ToArray());
-                });
+            //        List<string> dbs = new List<string>(from each in runner.Result select each.Name);
+            //        txtDatabaseFullName.AutoCompleteCustomSource.AddRange(dbs.ToArray());
+            //    });
 
             if (School.IsShared)
             {
-                Text = "新學校預設參數設定";
-                txtDatabaseName.Text = "new_ischool_db";
-                txtDatabaseName.Enabled = false;
+                Text = "預設參數設定";
+                txtDatabaseFullName.Text = "jdbc:postgresql://127.0.0.1/new_db";
+                txtDatabaseFullName.Enabled = false;
                 btnSelectDatabase.Enabled = false;
             }
             else
-                Text = string.Format("學校參數設定 - [{0}]", School.Name);
+                Text = string.Format("參數設定 - [{0}]", School.Name);
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace Manager
             arg.DDLUserName = txtDDLUserName.Text;
             arg.DDLPassword = txtDDLPassword.Text;
             arg.Comment = txtMemo.Text;
-            arg.SetDatabaseName(txtDatabaseName.Text);
+            arg.SetDatabaseFullName(txtDatabaseFullName.Text);
 
             AsyncRunner runner = new AsyncRunner();
             runner.Message = "更新學校設定中...";
@@ -102,7 +102,14 @@ namespace Manager
         private void txtDatabaseName_DragDrop(object sender, DragEventArgs e)
         {
             Database db = e.Data.GetData(typeof(Database)) as Database;
-            txtDatabaseName.Text = db.Name;
+            if (txtDatabaseFullName.SelectionLength > 0)
+            {
+                txtDatabaseFullName.SelectedText = db.Name;
+            }
+            else
+            {
+                txtDatabaseFullName.AppendText(db.Name);
+            }
         }
     }
 }

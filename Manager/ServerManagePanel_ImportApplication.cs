@@ -70,8 +70,15 @@ namespace Manager
                     newApps.ExceptWith(curApps);
 
                     //建立不存在的 Application。
+                    int createCount = 0;
                     foreach (string name in newApps)
+                    {
+                        createCount++;
+
+                        MainForm.SetBarMessage(string.Format("建立新 Application：{0}/{1}", createCount, newApps.Count));
+
                         Server.Manager.CloneApplication(name);
+                    }
 
                     //Parallel.ForEach(newApps, name =>
                     //{
@@ -79,17 +86,27 @@ namespace Manager
                     //});
 
                     //先將 Application 的 Enabled 屬性設定好。
+                    int setAttCount = 0;
                     foreach (DSAppInfo app in import_list)
+                    {
+                        setAttCount++;
+
+                        MainForm.SetBarMessage(string.Format("設定 Application Enabled 屬性：{0}/{1}", setAttCount, import_list.Count));
                         Server.Manager.SetApplicationEnable(app.Name, app.Enabled);
+                    }
 
                     //Parallel.ForEach(import_list, app =>
                     //{
                     //    Server.Manager.SetApplicationEnable(app.Name, app.Enabled);
                     //});
 
+                    int setParamsCount = 0;
+
                     XmlHelper req = new XmlHelper();
                     foreach (DSAppInfo app in import_list)
                     {
+                        setParamsCount++;
+
                         XmlHelper appreq = new XmlHelper(req.AddElement("Application"));
                         appreq.SetAttribute(".", "Name", app.Name);
                         appreq.AddElement(".", "Param", app.DBUrl).SetAttribute("Name", "db_url");
@@ -99,20 +116,38 @@ namespace Manager
                         appreq.AddElement(".", "Param", app.DDLPassword).SetAttribute("Name", "db_udt_pwd");
                         appreq.AddElement(".", "Param", app.SchoolCode).SetAttribute("Name", "school_code");
                         appreq.AddElement(".", "Param", app.Comment).SetAttribute("Name", "app_comment");
-                    }
-                    Server.Manager.SetApplicationsArgument(req.GetElement("."));
 
+                        if ((setParamsCount % 10) == 0)
+                        {
+                            MainForm.SetBarMessage(string.Format("設定 Application Params ：{0}/{1}", setParamsCount, import_list.Count));
+                            Server.Manager.SetApplicationsArgument(req.GetElement("."));
+                            req = new XmlHelper();
+                        }
+                    }
+
+                    if ((setParamsCount % 10) != 0)
+                    {
+                        MainForm.SetBarMessage(string.Format("設定 Application Params ：{0}/{1}", setParamsCount, import_list.Count));
+                        Server.Manager.SetApplicationsArgument(req.GetElement("."));
+                        req = new XmlHelper();
+                    }
+
+
+                    MainForm.SetBarMessage("Reload Server...");
                     XmlElement result = Server.Manager.ReloadServer();
 
                     XmlNodeList nodes = result.SelectNodes("Result[@Status!='0']");
                     if (nodes.Count > 0)
                         MessageBox.Show(XmlHelper.Format(result.OuterXml));
 
+                    MainForm.SetBarMessage("Download new configuration...");
                     Server.ReloadApplications();
                     Server.ReloadConfiguration();
                     ServerManagePanel.Instance.SetServerObject(Server);
 
                     MessageBox.Show("匯入完成!");
+
+                    MainForm.SetBarMessage("Complete!");
                 }
                 catch (Exception ex)
                 {

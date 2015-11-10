@@ -528,7 +528,7 @@ namespace Manager
                         CurrentServer.AddApplication(appName.ToLower());
                         Application app = CurrentServer.GetSharedApplication();
                         Application.Argument arg = app.GetArgument();
-                        arg.SetDatabaseName(dbName);
+                        arg.SetDatabaseFullName(dbName);
                         arg.Name = appName;
                         CurrentServer.SetApplicationArgument(arg);
                     }
@@ -567,8 +567,13 @@ namespace Manager
 
             if (MessageBox.Show(string.Format("您確定刪除選擇的學校？\n一但刪除之後將無法復原\n\n註：資料庫請手動刪除。"), "prototype", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                int count = 0;
                 foreach (Application app in apps)
+                {
+                    count++;
+                    MainForm.SetBarMessage(string.Format("移除：{0}/{1}", count, apps.Count));
                     CurrentServer.RemoveApplication(app.Name);
+                }
 
                 SyncServerStatus();
             }

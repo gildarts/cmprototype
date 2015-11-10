@@ -24,8 +24,8 @@ namespace Manager
             Enabled = bool.Parse(Definition.GetText("Property[@Name='Enabled']"));
 
             DatabaseFullName = Definition.GetText("Property[@Name='Param']/Application/Param[@Name='db_url']");
-            Regex rx = new Regex(Database.ParserPattern);
-            DatabaseName = rx.Replace(DatabaseFullName, "${db}");
+            //Regex rx = new Regex(Database.ParserPattern);
+            //DatabaseName = rx.Replace(DatabaseFullName, "${db}");
 
             DMLUserName = Definition.GetText("Property[@Name='Param']/Application/Param[@Name='db_user']");
             DMLPassword = Definition.GetText("Property[@Name='Param']/Application/Param[@Name='db_pwd']");
@@ -57,7 +57,14 @@ namespace Manager
         /// </summary>
         public string DatabaseFullName { get; private set; }
 
-        public string DatabaseName { get; private set; }
+        public string DatabaseName
+        {
+            get
+            {
+                Regex rx = new Regex(Database.ParserPattern);
+                return rx.Replace(DatabaseFullName, "${db}");
+            }
+        }
 
         public string DMLUserName { get; private set; }
 
@@ -121,14 +128,14 @@ namespace Manager
 
             public string DatabaseFullName { get; set; }
 
-            public string DatabaseName
-            {
-                get
-                {
-                    Regex rx = new Regex(Database.ParserPattern);
-                    return rx.Replace(DatabaseFullName, "${db}");
-                }
-            }
+            //public string DatabaseName
+            //{
+            //    get
+            //    {
+            //        Regex rx = new Regex(Database.ParserPattern);
+            //        return rx.Replace(DatabaseFullName, "${db}");
+            //    }
+            //}
 
             public string DMLUserName { get; set; }
 
@@ -142,10 +149,10 @@ namespace Manager
 
             public string Comment { get; set; }
 
-            public void SetDatabaseName(string name)
+            public void SetDatabaseFullName(string fullName)
             {
-                Regex rx = new Regex(Database.ParserPattern);
-                DatabaseFullName = rx.Replace(DatabaseFullName, "${pgstring}" + name);
+                //Regex rx = new Regex(Database.ParserPattern);
+                DatabaseFullName = fullName;// rx.Replace(DatabaseFullName, "${pgstring}" + name);
             }
 
             public XmlElement ToXml()

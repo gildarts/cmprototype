@@ -43,7 +43,7 @@
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.txtMemo = new Manager.TextEditor.BaseSyntaxEditor();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.txtDatabaseName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtDatabaseFullName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnSelectDatabase = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
@@ -248,19 +248,19 @@
             // 
             // txtDatabaseName
             // 
-            this.txtDatabaseName.AllowDrop = true;
-            this.txtDatabaseName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtDatabaseName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtDatabaseFullName.AllowDrop = true;
+            this.txtDatabaseFullName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtDatabaseFullName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             // 
             // 
             // 
-            this.txtDatabaseName.Border.Class = "TextBoxBorder";
-            this.txtDatabaseName.Location = new System.Drawing.Point(99, 12);
-            this.txtDatabaseName.Name = "txtDatabaseName";
-            this.txtDatabaseName.Size = new System.Drawing.Size(503, 25);
-            this.txtDatabaseName.TabIndex = 1;
-            this.txtDatabaseName.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtDatabaseName_DragDrop);
-            this.txtDatabaseName.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtDatabaseName_DragEnter);
+            this.txtDatabaseFullName.Border.Class = "TextBoxBorder";
+            this.txtDatabaseFullName.Location = new System.Drawing.Point(99, 12);
+            this.txtDatabaseFullName.Name = "txtDatabaseName";
+            this.txtDatabaseFullName.Size = new System.Drawing.Size(503, 25);
+            this.txtDatabaseFullName.TabIndex = 1;
+            this.txtDatabaseFullName.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtDatabaseName_DragDrop);
+            this.txtDatabaseFullName.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtDatabaseName_DragEnter);
             // 
             // btnSelectDatabase
             // 
@@ -280,7 +280,7 @@
             this.ClientSize = new System.Drawing.Size(659, 376);
             this.ControlBox = false;
             this.Controls.Add(this.btnSelectDatabase);
-            this.Controls.Add(this.txtDatabaseName);
+            this.Controls.Add(this.txtDatabaseFullName);
             this.Controls.Add(this.labelX5);
             this.Controls.Add(this.txtMemo);
             this.Controls.Add(this.btnCancel);
@@ -320,7 +320,7 @@
         private DevComponents.DotNetBar.LabelX labelX4;
         private TextEditor.BaseSyntaxEditor txtMemo;
         private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtDatabaseName;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtDatabaseFullName;
         private DevComponents.DotNetBar.ButtonX btnSelectDatabase;
 
     }

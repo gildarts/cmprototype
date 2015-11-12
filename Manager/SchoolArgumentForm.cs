@@ -16,6 +16,8 @@ namespace Manager
     {
         private Application School { get; set; }
 
+        string[] build_in = { "db_url", "db_user", "db_pwd", "db_udt_user", "db_udt_pwd", "app_comment" };
+
         internal SchoolArgumentForm(Application app)
         {
             InitializeComponent();
@@ -25,12 +27,23 @@ namespace Manager
 
         private void SchoolArgumentForm_Load(object sender, EventArgs e)
         {
+            txtDatabaseFullName.Text = School.DatabaseFullName;
             txtDMLUserName.Text = School.DMLUserName;
             txtDMLPassword.Text = School.DMLPassword;
             txtDDLUserName.Text = School.DDLUserName;
             txtDDLPassword.Text = School.DDLPassword;
             txtMemo.Text = School.Comment;
-            txtDatabaseFullName.Text = School.DatabaseFullName;
+
+            foreach (KeyValuePair<string, string> each in School.GetParameters())
+            {
+                if (build_in.Contains(each.Key))
+                    continue;
+
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dgvParams, each.Key, each.Value);
+
+                dgvParams.Rows.Add(row);
+            }
 
             //AsyncRunner<object, List<Database>> runner = new AsyncRunner<object, List<Database>>();
             //runner.Run(
@@ -65,6 +78,14 @@ namespace Manager
             arg["db_udt_user"] = txtDDLUserName.Text;
             arg["db_udt_pwd"] = txtDDLPassword.Text;
             arg["app_comment"] = txtMemo.Text;
+
+            foreach (DataGridViewRow row in dgvParams.Rows)
+            {
+                string name = row.Cells["chName"].Value + "";
+                string value = row.Cells["chValue"].Value + "";
+
+                arg[name] = value;
+            }
 
             //arg.DMLUserName = txtDMLUserName.Text;
             //arg.DMLPassword = txtDMLPassword.Text;

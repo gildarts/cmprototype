@@ -110,6 +110,10 @@ namespace Manager
             if (ConfigChanged != null) ConfigChanged(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// 包含了「名稱」。
+        /// </summary>
+        /// <returns></returns>
         public Argument GetArgument()
         {
             Argument arg = new Argument(Name);

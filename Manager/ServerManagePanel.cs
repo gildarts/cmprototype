@@ -824,9 +824,9 @@ namespace Manager
             {
                 List<string> dbList = new List<string>();
                 foreach (DataGridViewRow row in dgvSchoolManageList.SelectedRows)
-                    dbList.Add((row.Tag as Application).DatabaseName);
+                    dbList.Add((row.Tag as Application).DatabaseFullName);
 
-                new DBPermissionReset(CurrentServer, SelectedApp.DatabaseName, dbList).ShowDialog();
+                new DBPermissionReset(CurrentServer, SelectedApp.DatabaseFullName, dbList).ShowDialog();
             }
         }
 

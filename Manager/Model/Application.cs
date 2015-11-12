@@ -4,6 +4,7 @@ using System.Text;
 using System.Xml;
 using FISCA.DSA;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace Manager
 {
@@ -11,9 +12,12 @@ namespace Manager
     {
         public const string SharedName = "shared";
 
+        private Dictionary<string, string> parameters;
+
         public Application(Server owner)
         {
             Owner = owner;
+            parameters = new Dictionary<string, string>();
         }
 
         public void LoadDefinition(XmlElement definition)
@@ -33,6 +37,14 @@ namespace Manager
             DDLPassword = Definition.GetText("Property[@Name='Param']/Application/Param[@Name='db_udt_pwd']");
             SchoolCode = Definition.GetText("Property[@Name='Param']/Application/Param[@Name='school_code']");
             Comment = Definition.GetText("Property[@Name='Param']/Application/Param[@Name='app_comment']");
+
+            foreach (XmlElement param in Definition.GetElements("Property[@Name='Param']/Application/Param"))
+            {
+                string name = param.GetAttribute("Name");
+                string val = param.InnerText;
+
+                parameters[name] = val;
+            }
 
             if (string.Equals(Name, SharedName, StringComparison.OrdinalIgnoreCase))
                 IsShared = true;
@@ -76,6 +88,11 @@ namespace Manager
 
         public bool IsShared { get; private set; }
 
+        public Dictionary<string, string> GetParameters()
+        {
+            return new Dictionary<string, string>(parameters);
+        }
+
         /// <summary>
         /// 不可直接修改此屬性資料。
         /// </summary>
@@ -96,13 +113,17 @@ namespace Manager
         public Argument GetArgument()
         {
             Argument arg = new Argument(Name);
-            arg.DatabaseFullName = DatabaseFullName;
-            arg.DMLUserName = DMLUserName;
-            arg.DMLPassword = DMLPassword;
-            arg.DDLUserName = DDLUserName;
-            arg.DDLPassword = DDLPassword;
-            arg.SchoolCode = SchoolCode;
-            arg.Comment = Comment;
+
+            foreach (KeyValuePair<string, string> param in GetParameters())
+                arg.Add(param.Key, param.Value);
+
+            //arg.DatabaseFullName = DatabaseFullName;
+            //arg.DMLUserName = DMLUserName;
+            //arg.DMLPassword = DMLPassword;
+            //arg.DDLUserName = DDLUserName;
+            //arg.DDLPassword = DDLPassword;
+            //arg.SchoolCode = SchoolCode;
+            //arg.Comment = Comment;
 
             return arg;
         }
@@ -117,7 +138,7 @@ namespace Manager
         /// </summary>
         public event EventHandler ConfigChanged;
 
-        public class Argument
+        public class Argument : Dictionary<string, string>
         {
             internal Argument(string appName)
             {
@@ -126,7 +147,7 @@ namespace Manager
 
             public string Name { get; set; }
 
-            public string DatabaseFullName { get; set; }
+            //public string DatabaseFullName { get; set; }
 
             //public string DatabaseName
             //{
@@ -137,50 +158,57 @@ namespace Manager
             //    }
             //}
 
-            public string DMLUserName { get; set; }
+            //public string DMLUserName { get; set; }
 
-            public string DMLPassword { get; set; }
+            //public string DMLPassword { get; set; }
 
-            public string DDLUserName { get; set; }
+            //public string DDLUserName { get; set; }
 
-            public string DDLPassword { get; set; }
+            //public string DDLPassword { get; set; }
 
-            public string SchoolCode { get; set; }
+            //public string SchoolCode { get; set; }
 
-            public string Comment { get; set; }
+            //public string Comment { get; set; }
 
-            public void SetDatabaseFullName(string fullName)
-            {
-                //Regex rx = new Regex(Database.ParserPattern);
-                DatabaseFullName = fullName;// rx.Replace(DatabaseFullName, "${pgstring}" + name);
-            }
+            //public void SetDatabaseFullName(string fullName)
+            //{
+            //Regex rx = new Regex(Database.ParserPattern);
+            //DatabaseFullName = fullName;// rx.Replace(DatabaseFullName, "${pgstring}" + name);
+            //}
 
             public XmlElement ToXml()
             {
                 FISCA.XHelper helper = new FISCA.XHelper("<Application/>");
-                FISCA.XHelper param = null;
+                //FISCA.XHelper param = null;
 
                 helper.SetAttribute(".", "Name", Name);
-                param = new FISCA.XHelper(helper.AddElement(".", "Param", DatabaseFullName));
-                param.SetAttribute(".", "Name", "db_url");
 
-                param = new FISCA.XHelper(helper.AddElement(".", "Param", DMLUserName));
-                param.SetAttribute(".", "Name", "db_user");
+                foreach (KeyValuePair<string, string> p in this)
+                {
+                    FISCA.XHelper xml = new FISCA.XHelper(helper.AddElement(".", "Param", p.Value));
+                    xml.SetAttribute(".", "Name", p.Key);
+                }
 
-                param = new FISCA.XHelper(helper.AddElement(".", "Param", DMLPassword));
-                param.SetAttribute(".", "Name", "db_pwd");
+                //param = new FISCA.XHelper(helper.AddElement(".", "Param", DatabaseFullName));
+                //param.SetAttribute(".", "Name", "db_url");
 
-                param = new FISCA.XHelper(helper.AddElement(".", "Param", DDLUserName));
-                param.SetAttribute(".", "Name", "db_udt_user");
+                //param = new FISCA.XHelper(helper.AddElement(".", "Param", DMLUserName));
+                //param.SetAttribute(".", "Name", "db_user");
 
-                param = new FISCA.XHelper(helper.AddElement(".", "Param", DDLPassword));
-                param.SetAttribute(".", "Name", "db_udt_pwd");
+                //param = new FISCA.XHelper(helper.AddElement(".", "Param", DMLPassword));
+                //param.SetAttribute(".", "Name", "db_pwd");
 
-                param = new FISCA.XHelper(helper.AddElement(".", "Param", SchoolCode));
-                param.SetAttribute(".", "Name", "school_code");
+                //param = new FISCA.XHelper(helper.AddElement(".", "Param", DDLUserName));
+                //param.SetAttribute(".", "Name", "db_udt_user");
 
-                param = new FISCA.XHelper(helper.AddElement(".", "Param", Comment));
-                param.SetAttribute(".", "Name", "app_comment");
+                //param = new FISCA.XHelper(helper.AddElement(".", "Param", DDLPassword));
+                //param.SetAttribute(".", "Name", "db_udt_pwd");
+
+                //param = new FISCA.XHelper(helper.AddElement(".", "Param", SchoolCode));
+                //param.SetAttribute(".", "Name", "school_code");
+
+                //param = new FISCA.XHelper(helper.AddElement(".", "Param", Comment));
+                //param.SetAttribute(".", "Name", "app_comment");
 
                 return helper.Data;
             }

@@ -474,20 +474,20 @@ namespace Manager
         /// <param name="e"></param>
         private void btnAddApp_Click(object sender, EventArgs e)
         {
-            InputBox input = new InputBox("新學校識別:資料庫名稱");
+            InputBox input = new InputBox("新 Application 名稱");
             input.Confirming += delegate(object o, CancelEventArgs arg)
             {
                 arg.Cancel = true;
 
                 if (string.IsNullOrWhiteSpace(input.InputString))
                 {
-                    MessageBox.Show("學校識別必須輸入資料。");
+                    MessageBox.Show("識別必須輸入資料。");
                     return;
                 }
 
                 if (CurrentServer.ContainsApplication(input.InputString))
                 {
-                    MessageBox.Show("學校識別名稱重覆。");
+                    MessageBox.Show("識別名稱重覆。");
                     return;
                 }
 
@@ -514,7 +514,7 @@ namespace Manager
             {
                 string newString = input.InputString;
                 AsyncRunner runner = new AsyncRunner();
-                runner.Message = "建立新學校中...";
+                runner.Message = "建立新 Application 中...";
                 runner.MessageOwner = this;
 
                 runner.Run(x =>
@@ -528,7 +528,7 @@ namespace Manager
                         CurrentServer.AddApplication(appName.ToLower());
                         Application app = CurrentServer.GetSharedApplication();
                         Application.Argument arg = app.GetArgument();
-                        arg.SetDatabaseFullName(dbName);
+                        //arg.SetDatabaseFullName(dbName); //這部份有調整。
                         arg.Name = appName;
                         CurrentServer.SetApplicationArgument(arg);
                     }
@@ -544,9 +544,9 @@ namespace Manager
                         string msg;
 
                         if (ErrorParser.TryGetSqlException(x.TaskError, out sqlmsg))
-                            msg = ("建立學校資料庫錯誤，您可能沒有權限建立資料庫\n\n" + sqlmsg);
+                            msg = ("建立資料庫錯誤，您可能沒有權限建立資料庫\n\n" + sqlmsg);
                         else
-                            msg = "建立新學校發生錯誤！";
+                            msg = "建立新 Application 發生錯誤！";
 
                         ErrorForm err = new ErrorForm();
                         err.Display(msg, x.TaskError);
@@ -565,7 +565,7 @@ namespace Manager
             foreach (DataGridViewRow row in dgvSchoolManageList.SelectedRows)
                 apps.Add(row.Tag as Application);
 
-            if (MessageBox.Show(string.Format("您確定刪除選擇的學校？\n一但刪除之後將無法復原\n\n註：資料庫請手動刪除。"), "prototype", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(string.Format("您確定刪除選擇的 Application?\n一但刪除之後將無法復原\n\n註：資料庫請手動刪除。"), "prototype", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int count = 0;
                 foreach (Application app in apps)
@@ -801,7 +801,7 @@ namespace Manager
 
         private void btnSetTemplate_Click(object sender, EventArgs e)
         {
-            InputBox input = new InputBox("設定新學校樣版資料庫", CurrentServer.TemplateDatabase);
+            InputBox input = new InputBox("設定新 Application 樣版資料庫", CurrentServer.TemplateDatabase);
             input.Confirming += delegate(object o, CancelEventArgs arg)
             {
                 if (!CurrentServer.Manager.DatabaseExists(input.InputString))
@@ -1086,7 +1086,7 @@ namespace Manager
                 }
             }
             else
-                MessageBox.Show("請選擇學校。");
+                MessageBox.Show("請選擇 Application.");
         }
 
         private void btnListDatabase_Click(object sender, EventArgs e)

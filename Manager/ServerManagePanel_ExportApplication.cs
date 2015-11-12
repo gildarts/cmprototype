@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -35,35 +36,63 @@ namespace Manager
                 book.Worksheets.Clear();
                 Worksheet sheet = book.Worksheets[book.Worksheets.Add()];
 
-                int column = 0;
-                sheet.Cells[0, column++].PutValue("name");
-                sheet.Cells[0, column++].PutValue("db_url");
-                sheet.Cells[0, column++].PutValue("db_user");
-                sheet.Cells[0, column++].PutValue("db_pwd");
-                sheet.Cells[0, column++].PutValue("db_udt_user");
-                sheet.Cells[0, column++].PutValue("db_udt_pwd");
-                sheet.Cells[0, column++].PutValue("school_code");
-                sheet.Cells[0, column++].PutValue("app_comment");
-                sheet.Cells[0, column++].PutValue("enabled");
+                List<string> columns = GroupParameterNames(apps);
+                Dictionary<string, int> map = new Dictionary<string, int>();
+
+                int columnIndex = 0;
+
+                //Name
+                sheet.Cells[0, columnIndex].PutValue("name");
+                map.Add("name", columnIndex);
+                columnIndex++;
+
+                //Enabled
+                sheet.Cells[0, columnIndex].PutValue("enabled");
+                map.Add("enabled", columnIndex);
+                columnIndex++;
+
+                foreach (string column in columns)
+                {
+                    sheet.Cells[0, columnIndex].PutValue(column);
+
+                    map.Add(column, columnIndex);
+
+                    columnIndex++;
+                }
 
                 int row = 1;
                 foreach (Application app in apps)
                 {
-                    column = 0;
-                    sheet.Cells[row, column++].PutValue(app.Name);
-                    sheet.Cells[row, column++].PutValue(app.DatabaseFullName);
-                    sheet.Cells[row, column++].PutValue(app.DMLUserName);
-                    sheet.Cells[row, column++].PutValue(app.DMLPassword);
-                    sheet.Cells[row, column++].PutValue(app.DDLUserName);
-                    sheet.Cells[row, column++].PutValue(app.DDLPassword);
-                    sheet.Cells[row, column++].PutValue(app.SchoolCode);
-                    sheet.Cells[row, column++].PutValue(app.Comment);
-                    sheet.Cells[row, column++].PutValue(app.Enabled);
+                    sheet.Cells[row, map["name"]].PutValue(app.Name);
+                    sheet.Cells[row, map["enabled"]].PutValue(app.Enabled);
+
+                    foreach (KeyValuePair<string, string> pair in app.GetParameters())
+                    {
+                        sheet.Cells[row, map[pair.Key]].PutValue(pair.Value);
+                    }
+
                     row++;
                 }
 
                 book.Save(dialog.FileName, SaveFormat.Xlsx);
+                Process.Start(dialog.FileName);
             }
+        }
+
+        private List<string> GroupParameterNames(List<Application> apps)
+        {
+            HashSet<string> columns = new HashSet<string>();
+
+            foreach (Application app in apps)
+            {
+                foreach (string field in app.GetParameters().Keys)
+                {
+                    if (!columns.Contains(field))
+                        columns.Add(field);
+                }
+            }
+
+            return new List<string>(columns);
         }
     }
 }

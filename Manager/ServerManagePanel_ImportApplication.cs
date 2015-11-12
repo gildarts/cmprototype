@@ -42,14 +42,24 @@ namespace Manager
                     {
                         DSAppInfo appinfo = new DSAppInfo();
                         appinfo.Name = sheet.Cells[i, column["name"]].StringValue;
-                        appinfo.DBUrl = sheet.Cells[i, column["db_url"]].StringValue;
-                        appinfo.DMLUser = sheet.Cells[i, column["db_user"]].StringValue;
-                        appinfo.DMLPassword = sheet.Cells[i, column["db_pwd"]].StringValue;
-                        appinfo.DDLUser = sheet.Cells[i, column["db_udt_user"]].StringValue;
-                        appinfo.DDLPassword = sheet.Cells[i, column["db_udt_pwd"]].StringValue;
-                        appinfo.SchoolCode = sheet.Cells[i, column["school_code"]].StringValue;
-                        appinfo.Comment = sheet.Cells[i, column["app_comment"]].StringValue;
                         appinfo.TrySetEnabled(sheet.Cells[i, column["enabled"]].StringValue);
+
+                        foreach (string each in column.Keys)
+                        {
+                            //name、enabled 不能加入參數之中。
+                            if (each.ToUpper() == "name".ToUpper() || each.ToUpper() == "enabled".ToUpper())
+                                continue;
+
+                            appinfo.Arguments.Add(each, sheet.Cells[i, column[each]].StringValue);
+                        }
+
+                        //appinfo.DBUrl = sheet.Cells[i, column["db_url"]].StringValue;
+                        //appinfo.DMLUser = sheet.Cells[i, column["db_user"]].StringValue;
+                        //appinfo.DMLPassword = sheet.Cells[i, column["db_pwd"]].StringValue;
+                        //appinfo.DDLUser = sheet.Cells[i, column["db_udt_user"]].StringValue;
+                        //appinfo.DDLPassword = sheet.Cells[i, column["db_udt_pwd"]].StringValue;
+                        //appinfo.SchoolCode = sheet.Cells[i, column["school_code"]].StringValue;
+                        //appinfo.Comment = sheet.Cells[i, column["app_comment"]].StringValue;
 
                         import_list.Add(appinfo);
 
@@ -109,13 +119,17 @@ namespace Manager
 
                         XmlHelper appreq = new XmlHelper(req.AddElement("Application"));
                         appreq.SetAttribute(".", "Name", app.Name);
-                        appreq.AddElement(".", "Param", app.DBUrl).SetAttribute("Name", "db_url");
-                        appreq.AddElement(".", "Param", app.DMLUser).SetAttribute("Name", "db_user");
-                        appreq.AddElement(".", "Param", app.DMLPassword).SetAttribute("Name", "db_pwd");
-                        appreq.AddElement(".", "Param", app.DDLUser).SetAttribute("Name", "db_udt_user");
-                        appreq.AddElement(".", "Param", app.DDLPassword).SetAttribute("Name", "db_udt_pwd");
-                        appreq.AddElement(".", "Param", app.SchoolCode).SetAttribute("Name", "school_code");
-                        appreq.AddElement(".", "Param", app.Comment).SetAttribute("Name", "app_comment");
+
+                        foreach (KeyValuePair<string, string> p in app.Arguments)
+                            appreq.AddElement(".", "Param", p.Value).SetAttribute("Name", p.Key);
+
+                        //appreq.AddElement(".", "Param", app.DBUrl).SetAttribute("Name", "db_url");
+                        //appreq.AddElement(".", "Param", app.DMLUser).SetAttribute("Name", "db_user");
+                        //appreq.AddElement(".", "Param", app.DMLPassword).SetAttribute("Name", "db_pwd");
+                        //appreq.AddElement(".", "Param", app.DDLUser).SetAttribute("Name", "db_udt_user");
+                        //appreq.AddElement(".", "Param", app.DDLPassword).SetAttribute("Name", "db_udt_pwd");
+                        //appreq.AddElement(".", "Param", app.SchoolCode).SetAttribute("Name", "school_code");
+                        //appreq.AddElement(".", "Param", app.Comment).SetAttribute("Name", "app_comment");
 
                         if ((setParamsCount % 10) == 0)
                         {
@@ -158,21 +172,34 @@ namespace Manager
 
         private class DSAppInfo
         {
+            public DSAppInfo()
+            {
+                Arguments = new Dictionary<string, string>();
+            }
+
             public string Name { get; set; }
 
-            public string DBUrl { get; set; }
+            public Dictionary<string, string> Arguments { get; set; }
 
-            public string DMLUser { get; set; }
+            public string DBUrl
+            {
+                get
+                {
+                    return Arguments["db_url"];
+                }
+            }
 
-            public string DMLPassword { get; set; }
+            //public string DMLUser { get; set; }
 
-            public string DDLUser { get; set; }
+            //public string DMLPassword { get; set; }
 
-            public string DDLPassword { get; set; }
+            //public string DDLUser { get; set; }
 
-            public string SchoolCode { get; set; }
+            //public string DDLPassword { get; set; }
 
-            public string Comment { get; set; }
+            //public string SchoolCode { get; set; }
+
+            //public string Comment { get; set; }
 
             public bool Enabled { get; set; }
 

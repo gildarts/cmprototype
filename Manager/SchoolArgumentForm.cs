@@ -50,8 +50,6 @@ namespace Manager
             {
                 Text = "預設參數設定";
                 txtDatabaseFullName.Text = "jdbc:postgresql://127.0.0.1/new_db";
-                txtDatabaseFullName.Enabled = false;
-                btnSelectDatabase.Enabled = false;
             }
             else
                 Text = string.Format("參數設定 - [{0}]", School.Name);
@@ -60,12 +58,20 @@ namespace Manager
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             Application.Argument arg = School.GetArgument();
-            arg.DMLUserName = txtDMLUserName.Text;
-            arg.DMLPassword = txtDMLPassword.Text;
-            arg.DDLUserName = txtDDLUserName.Text;
-            arg.DDLPassword = txtDDLPassword.Text;
-            arg.Comment = txtMemo.Text;
-            arg.SetDatabaseFullName(txtDatabaseFullName.Text);
+
+            arg["db_url"] = txtDatabaseFullName.Text;
+            arg["db_user"] = txtDMLUserName.Text;
+            arg["db_pwd"] = txtDMLPassword.Text;
+            arg["db_udt_user"] = txtDDLUserName.Text;
+            arg["db_udt_pwd"] = txtDDLPassword.Text;
+            arg["app_comment"] = txtMemo.Text;
+
+            //arg.DMLUserName = txtDMLUserName.Text;
+            //arg.DMLPassword = txtDMLPassword.Text;
+            //arg.DDLUserName = txtDDLUserName.Text;
+            //arg.DDLPassword = txtDDLPassword.Text;
+            //arg.Comment = txtMemo.Text;
+            //arg.SetDatabaseFullName(txtDatabaseFullName.Text);
 
             AsyncRunner runner = new AsyncRunner();
             runner.Message = "更新學校設定中...";
@@ -85,7 +91,9 @@ namespace Manager
                         DialogResult = System.Windows.Forms.DialogResult.None;
                     }
                     else
+                    {
                         DialogResult = System.Windows.Forms.DialogResult.OK;
+                    }
                 });
         }
 

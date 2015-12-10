@@ -13,6 +13,7 @@ using System.Reflection;
 using ActiproSoftware.SyntaxEditor.Addons.Dynamic;
 using System.Xml.Linq;
 using FISCA;
+using System.Text.RegularExpressions;
 
 namespace Manager
 {
@@ -133,23 +134,26 @@ namespace Manager
             publicRole.CanLogin = false;
             roles.Add(publicRole);
 
+            Regex rx = new Regex(Database.ParserPattern);
+            string db = rx.Replace(dbmanager.TargetDatabase, "${db}");
+
             /* Database */
             foreach (DatabaseManager.RoleData role in roles)
             {
-                string revokeDB = string.Format("REVOKE ALL ON DATABASE \"{0}\" FROM \"{1}\";", dbmanager.TargetDatabase, role.Name);
+                string revokeDB = string.Format("REVOKE ALL ON DATABASE \"{0}\" FROM \"{1}\";", db, role.Name);
                 commands.AppendLine(revokeDB);
             }
 
-            string setDBOwner = string.Format("ALTER DATABASE \"{0}\" OWNER TO \"{1}\";", dbmanager.TargetDatabase, owner);
+            string setDBOwner = string.Format("ALTER DATABASE \"{0}\" OWNER TO \"{1}\";", db, owner);
             commands.AppendLine(setDBOwner);
 
-            string grantCrudConnect = string.Format("GRANT CONNECT ON DATABASE \"{0}\" TO \"{1}\";", dbmanager.TargetDatabase, crud);
+            string grantCrudConnect = string.Format("GRANT CONNECT ON DATABASE \"{0}\" TO \"{1}\";", db, crud);
             commands.AppendLine(grantCrudConnect);
 
-            string grantSchemaConnect = string.Format("GRANT CONNECT ON DATABASE \"{0}\" TO \"{1}\";", dbmanager.TargetDatabase, schema);
+            string grantSchemaConnect = string.Format("GRANT CONNECT ON DATABASE \"{0}\" TO \"{1}\";", db, schema);
             commands.AppendLine(grantSchemaConnect);
 
-            commands.AppendLine(template.ToDatabase.Replace("@Database", "\"" + dbmanager.TargetDatabase + "\""));
+            commands.AppendLine(template.ToDatabase.Replace("@Database", "\"" + db + "\""));
 
             /* Schema */
             foreach (DatabaseManager.RoleData role in roles)

@@ -28,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -37,6 +38,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>app.ico</ApplicationIcon>
@@ -66,17 +68,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Library\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
-    <Reference Include="FISCA.Authentication, Version=1.9.0.20, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="FISCA">
+      <HintPath>..\..\..\1campus_desktop\kernel\FISCA.dll</HintPath>
+    </Reference>
+    <Reference Include="FISCA.Authentication">
       <HintPath>..\Library\FISCA.Authentication.dll</HintPath>
     </Reference>
-    <Reference Include="FISCA.Core, Version=1.0.1.5, Culture=neutral, PublicKeyToken=a269f410f9e2a287, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="FISCA.Core">
       <HintPath>..\Library\FISCA.Core.dll</HintPath>
     </Reference>
-    <Reference Include="FISCA.DSAClient, Version=1.0.1.16, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Library\FISCA.DSAClient.dll</HintPath>
+    <Reference Include="FISCA.DSAClient">
+      <HintPath>..\..\..\1campus_desktop\kernel\FISCA.DSAClient.dll</HintPath>
     </Reference>
     <Reference Include="Script">
       <HintPath>..\..\..\..\..\WindowsData\Desktop\ischool desktop\kernel\Script.exe</HintPath>

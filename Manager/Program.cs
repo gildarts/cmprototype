@@ -81,11 +81,11 @@ namespace Manager
         {
             string basePath = System.Windows.Forms.Application.StartupPath;
 
-            if (File.Exists(Path.Combine(basePath, "update_padding.xml")))
-            {
-                FISCA.Deployment.UpdateHelper.ExecuteScript(Path.Combine(basePath, "update_padding.xml"), true);
-                return;
-            }
+            //if (File.Exists(Path.Combine(basePath, "update_padding.xml")))
+            //{
+            //    FISCA.Deployment.UpdateHelper.ExecuteScript(Path.Combine(basePath, "update_padding.xml"), true);
+            //    return;
+            //}
 
             ServicePointManager.ServerCertificateValidationCallback = delegate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
             {

@@ -462,6 +462,7 @@
             // 
             this.btnSaveState.Name = "btnSaveState";
             this.btnSaveState.Text = "另存狀態";
+            this.btnSaveState.Visible = false;
             this.btnSaveState.Click += new System.EventHandler(this.btnSaveState_Click);
             // 
             // btnTools
@@ -472,6 +473,7 @@
             this.btnNameServiceMan,
             this.btnImportMarkList});
             this.btnTools.Text = "工具";
+            this.btnTools.Visible = false;
             // 
             // btnNameService
             // 

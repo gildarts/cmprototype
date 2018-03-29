@@ -120,8 +120,8 @@ namespace Manager
         private void MainForm_Load(object sender, EventArgs e)
         {
             string basePath = System.Windows.Forms.Application.StartupPath;
-            if (!File.Exists(Path.Combine(basePath, "停止更新")))
-                Program.Update();
+            //if (!File.Exists(Path.Combine(basePath, "停止更新")))
+            //    Program.Update();
 
             ResetManagerTree();
 

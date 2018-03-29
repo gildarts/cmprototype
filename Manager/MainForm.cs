@@ -114,7 +114,7 @@ namespace Manager
             }
             catch { }
 
-            Text = string.Format("DSA Server Manager [{0}] [{1}]", Program.OnlineMode ? "線上" : "離線", version);
+            Text = string.Format("DSA Server Manager(BQC) [{0}] [{1}]", Program.OnlineMode ? "線上" : "離線", version);
         }
 
         private void MainForm_Load(object sender, EventArgs e)

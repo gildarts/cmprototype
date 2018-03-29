@@ -140,9 +140,15 @@ namespace Manager
                 LoginForm.SaveState();
             else
             {
-                XmlElement data = GetManagerTreeState();
-                data.OwnerDocument.Save(Path.Combine(System.Windows.Forms.Application.StartupPath, "configuration.xml"));
+                SaveStateToLocal();
             }
+        }
+
+        private static void SaveStateToLocal()
+        {
+            //本機不在儲存任何 Server 資料。
+            //XmlElement data = GetManagerTreeState();
+            //data.OwnerDocument.Save(Path.Combine(System.Windows.Forms.Application.StartupPath, "configuration.xml"));
         }
 
         private void SaveServerTree(XmlElement settings, NodeCollection nodes)

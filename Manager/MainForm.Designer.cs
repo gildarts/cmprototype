@@ -428,12 +428,14 @@
             // 
             this.btnChangeSecureCode.Name = "btnChangeSecureCode";
             this.btnChangeSecureCode.Text = "變更加密金鑰";
+            this.btnChangeSecureCode.Visible = false;
             this.btnChangeSecureCode.Click += new System.EventHandler(this.btnChangeSecureCode_Click);
             // 
             // btnClearSetting
             // 
             this.btnClearSetting.Name = "btnClearSetting";
             this.btnClearSetting.Text = "清除所有設定";
+            this.btnClearSetting.Visible = false;
             this.btnClearSetting.Click += new System.EventHandler(this.btnClearSetting_Click);
             // 
             // buttonItem5

@@ -14,7 +14,7 @@ namespace Manager
         public const string WidgetKey = "DSA4-Manager-Tool";
         public const string StateID = "b0c75bbd-a07e-4464-86af-4c97bbb9ebed";
 
-        public static string SecureCode { private get; set; }
+        //public static string SecureCode { private get; set; }
 
         public static void SaveState()
         {
@@ -24,8 +24,8 @@ namespace Manager
                 x =>
                 {
                     string plain = MainForm.GetManagerTreeState().OuterXml;
-                    string cipher = Password.EncryptoData(plain, SecureCode);
-                    Program.SetOnlinePreference(WidgetKey, StateID, cipher);
+                    //string cipher = Password.EncryptoData(plain, SecureCode);
+                    Program.SetOnlinePreference(WidgetKey, StateID, plain);
                 },
                 x =>
                 {
@@ -39,8 +39,8 @@ namespace Manager
         {
             try
             {
-                string plain = Password.DecryptoData(xmldata, SecureCode);
-                XmlElement state = FISCA.XHelper.ParseAsDOM(plain);
+                //string plain = Password.DecryptoData(xmldata, SecureCode);
+                XmlElement state = FISCA.XHelper.ParseAsDOM(xmldata);
                 MainForm.CreateManagerTree(state);
             }
             catch (System.Security.Cryptography.CryptographicException ex)
@@ -123,46 +123,56 @@ namespace Manager
             conn.Connect(Program.Greening, "", txtUserName.Text, txtPassword.Text);
 
             Program.Connection = conn;
-            Program.IsAdministrator = txtUserName.Text.IndexOf("@ischool.com.tw") >= 0;
+            Program.IsAdministrator = true; // txtUserName.Text.IndexOf("@ischool.com.tw") >= 0;
 
             string xmldata = Program.GetOnlinePreference(WidgetKey, StateID);
 
-            if (string.IsNullOrWhiteSpace(xmldata))
+            try
             {
-                //第一次登入要決定 Secure Code。
-                InputBox input = new InputBox("請設定您的安全代碼");
-                input.Confirming += delegate(object o, CancelEventArgs arg)
-                {
-                    if (string.IsNullOrEmpty(input.InputString))
-                    {
-                        string msg = "您未輸入任何資料，這代表您的安全代碼要與「目前」密碼相同，您確定嗎？";
-                        if (MessageBox.Show(msg, "Prototype", MessageBoxButtons.OKCancel) ==
-                            DialogResult.Cancel)
-                            arg.Cancel = true;
-                    }
-                };
-                if (input.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    if (string.IsNullOrWhiteSpace(input.InputString))
-                        SecureCode = txtPassword.Text;
-                    else
-                        SecureCode = input.InputString;
-
-                    MainForm.ResetManagerTree();
-                }
-                else
-                    throw new Exception("未決定安全代碼，無法登入系統。");
-            }
-            else
-            {
-                //依原則決定 Secure Code。
-                if (string.IsNullOrWhiteSpace(txtSecretCode.Text))
-                    SecureCode = txtPassword.Text;
-                else
-                    SecureCode = txtSecretCode.Text;
-
                 LoadState(xmldata);
+            } catch(Exception)
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml("<Root/>");
+                MainForm.CreateManagerTree(doc.DocumentElement);
             }
+            
+            //if (string.IsNullOrWhiteSpace(xmldata))
+            //{
+            //    //第一次登入要決定 Secure Code。
+            //    InputBox input = new InputBox("請設定您的安全代碼");
+            //    input.Confirming += delegate(object o, CancelEventArgs arg)
+            //    {
+            //        if (string.IsNullOrEmpty(input.InputString))
+            //        {
+            //            string msg = "您未輸入任何資料，這代表您的安全代碼要與「目前」密碼相同，您確定嗎？";
+            //            if (MessageBox.Show(msg, "Prototype", MessageBoxButtons.OKCancel) ==
+            //                DialogResult.Cancel)
+            //                arg.Cancel = true;
+            //        }
+            //    };
+            //    if (input.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //    {
+            //        if (string.IsNullOrWhiteSpace(input.InputString))
+            //            SecureCode = txtPassword.Text;
+            //        else
+            //            SecureCode = input.InputString;
+
+            //        MainForm.ResetManagerTree();
+            //    }
+            //    else
+            //        throw new Exception("未決定安全代碼，無法登入系統。");
+            //}
+            //else
+            //{
+            //    //依原則決定 Secure Code。
+            //    if (string.IsNullOrWhiteSpace(txtSecretCode.Text))
+            //        SecureCode = txtPassword.Text;
+            //    else
+            //        SecureCode = txtSecretCode.Text;
+
+            //    LoadState(xmldata);
+            //}
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -153,6 +153,7 @@
             this.labelX4.Size = new System.Drawing.Size(86, 21);
             this.labelX4.TabIndex = 5;
             this.labelX4.Text = "Secure Code";
+            this.labelX4.Visible = false;
             // 
             // txtSecretCode
             // 
@@ -169,6 +170,7 @@
             this.txtSecretCode.Size = new System.Drawing.Size(353, 25);
             this.txtSecretCode.TabIndex = 6;
             this.txtSecretCode.UseSystemPasswordChar = true;
+            this.txtSecretCode.Visible = false;
             this.txtSecretCode.WatermarkText = "請輸資料加密金鑰，留空白代表與密碼相同。";
             this.txtSecretCode.WordWrap = false;
             // 
@@ -180,11 +182,15 @@
             // 
             this.chkSaveLocal.BackgroundStyle.Class = "";
             this.chkSaveLocal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.chkSaveLocal.Checked = true;
+            this.chkSaveLocal.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkSaveLocal.CheckValue = "Y";
             this.chkSaveLocal.Location = new System.Drawing.Point(16, 164);
             this.chkSaveLocal.Name = "chkSaveLocal";
             this.chkSaveLocal.Size = new System.Drawing.Size(187, 21);
             this.chkSaveLocal.TabIndex = 7;
             this.chkSaveLocal.Text = "將以上資訊加密儲存到本機";
+            this.chkSaveLocal.Visible = false;
             // 
             // LoginForm
             // 

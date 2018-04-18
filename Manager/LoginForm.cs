@@ -83,13 +83,15 @@ namespace Manager
 
                 DoLoginAction();
 
-                if (chkSaveLocal.Checked)
-                    SaveLoginData();
-                else
-                {
-                    try { File.Delete(LoginData); }
-                    catch { }
-                }
+                SaveLoginData();
+
+                //if (chkSaveLocal.Checked)
+                //    SaveLoginData();
+                //else
+                //{
+                //    try { File.Delete(LoginData); }
+                //    catch { }
+                //}
 
                 DialogResult = System.Windows.Forms.DialogResult.OK;
             }

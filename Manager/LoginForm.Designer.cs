@@ -46,7 +46,7 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(387, 121);
+            this.btnCancel.Location = new System.Drawing.Point(387, 125);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(78, 27);
             this.btnCancel.TabIndex = 9;
@@ -58,7 +58,7 @@
             this.btnConnect.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConnect.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnConnect.Location = new System.Drawing.Point(303, 121);
+            this.btnConnect.Location = new System.Drawing.Point(303, 125);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(78, 27);
             this.btnConnect.TabIndex = 8;
@@ -197,7 +197,7 @@
             this.AcceptButton = this.btnConnect;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(477, 163);
+            this.ClientSize = new System.Drawing.Size(477, 167);
             this.ControlBox = false;
             this.Controls.Add(this.chkSaveLocal);
             this.Controls.Add(this.labelX1);

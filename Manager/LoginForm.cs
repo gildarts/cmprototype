@@ -11,8 +11,8 @@ namespace Manager
 {
     public partial class LoginForm : Office2007Form
     {
-        public const string WidgetKey = "DSA4-Manager-Tool";
-        public const string StateID = "b0c75bbd-a07e-4464-86af-4c97bbb9ebed";
+        public const string WidgetKey = "DSA4-Manager-Tool-2018";
+        public const string StateID = "b0c75bbd-a07e-4464-86af-4c97bbb9ebed-2018";
 
         //public static string SecureCode { private get; set; }
 

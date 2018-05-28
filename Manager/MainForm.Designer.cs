@@ -475,7 +475,6 @@
             this.btnNameServiceMan,
             this.btnImportMarkList});
             this.btnTools.Text = "工具";
-            this.btnTools.Visible = false;
             // 
             // btnNameService
             // 

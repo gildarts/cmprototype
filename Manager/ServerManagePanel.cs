@@ -1294,6 +1294,7 @@ namespace Manager
                     ExtraSecurityToken clone = new ExtraSecurityToken(DSAServices.DefaultDataSource.SecurityToken);
                     CloneSecurityToken token = new CloneSecurityToken(clone.TokenType, clone.XmlString);
                     Connection targetDSA = new Connection();
+                    targetDSA.EnableSecureTunnel = true;
                     targetDSA.Connect(DSAServices.AccessPoint, "admin", token);
 
                     upgrader.DoUpgrade(targetDSA, new SqlCommand(sm, app.DatabaseName), args);

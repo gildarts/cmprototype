@@ -122,6 +122,7 @@ namespace Manager
         private void DoLoginAction()
         {
             Connection conn = new Connection();
+            conn.EnableSecureTunnel = true;
             conn.Connect(Program.Greening, "", txtUserName.Text, txtPassword.Text);
 
             Program.Connection = conn;

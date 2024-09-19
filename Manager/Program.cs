@@ -29,7 +29,9 @@ namespace Manager
 
         internal static SecurityToken Passport { get; set; }
 
-        internal const string Greening = "https://auth.ischool.com.tw/dsa/greening";
+        //internal const string Greening = "https://auth.ischool.com.tw/dsa/greening";
+        internal const string Greening = "https://greening.ischool.com.tw/dsa/greening";
+
         //internal const string Greening = "http://qschool.benqedu.com.cn/greening/api";
         //internal const string Greening = "http://118.31.72.3:8080/greening/api";
         //internal const string Greening = "http://121.196.204.176:8080/greening/api";

@@ -464,7 +464,6 @@
             // 
             this.btnSaveState.Name = "btnSaveState";
             this.btnSaveState.Text = "另存狀態";
-            this.btnSaveState.Visible = false;
             this.btnSaveState.Click += new System.EventHandler(this.btnSaveState_Click);
             // 
             // btnTools

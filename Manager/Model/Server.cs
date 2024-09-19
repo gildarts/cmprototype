@@ -66,6 +66,7 @@ namespace Manager
             try
             {
                 Connection ds = new Connection();
+                ds.EnableSecureTunnel = true;
                 ds.Connect(RegistryData.AccessPointUrl, "", RegistryData.UserName, oldPassword);
 
                 FISCA.XHelper req = new FISCA.XHelper();
@@ -232,6 +233,7 @@ namespace Manager
         private Connection ConnectInternal()
         {
             Connection conn = new Connection();
+            conn.EnableSecureTunnel = true;
             conn.Connect(RegistryData.AccessPointUrl, "", RegistryData.UserName, RegistryData.Password);
             return conn;
         }

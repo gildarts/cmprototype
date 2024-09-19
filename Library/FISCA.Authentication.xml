@@ -44,6 +44,31 @@
             在傳輸資料時於MotherForm上顯示動畫
             </summary>
         </member>
+        <member name="P:FISCA.Authentication.DSAServices.DefaultConnection">
+            <summary>
+            取得登入系統的(不建議使用)。
+            </summary>
+        </member>
+        <member name="P:FISCA.Authentication.DSAServices.AdminConnection">
+            <summary>
+            Admin 的連線(Internal Use)。
+            </summary>
+        </member>
+        <member name="P:FISCA.Authentication.DSAServices.DefaultDataSource">
+            <summary>
+            使用者登入之預設連線位置。
+            </summary>
+        </member>
+        <member name="P:FISCA.Authentication.DSAServices.PassportToken">
+            <summary>
+            取得目前使用者的 PassportToken。
+            </summary>
+        </member>
+        <member name="P:FISCA.Authentication.DSAServices.PassportTokenInternal">
+            <summary>
+            取得使用者的 PassportToken，內部使用，最原始的 Passport 物件。
+            </summary>
+        </member>
         <member name="F:FISCA.Authentication.DSAServices.FullTimeEncrypt">
             <summary>
             是否全程加密。
@@ -72,6 +97,14 @@
             <param name="password"></param>
             <param name="accesspoint"></param>
             <param name="fullTimeEncrypt"></param>
+        </member>
+        <member name="M:FISCA.Authentication.DSAServices.ConnectByAccessToken(System.String,System.String,System.String)">
+            <summary>
+            連線到 DSA
+            </summary>
+            <param name="accessPoint">服務端點。</param>
+            <param name="dsaToken">合法 Credential。</param>
+            <param name="accessToken">合法 Credential。</param>
         </member>
         <member name="M:FISCA.Authentication.DSAServices.Disconnect">
             <summary>
@@ -109,6 +142,21 @@
             跟據 AccountType 連線到指定 AccessPoint。
             </summary>
         </member>
+        <member name="P:FISCA.Authentication.DSAServices.IsSysAdmin">
+            <summary>
+            取得登入帳號是否為系統管理員帳號
+            </summary>
+        </member>
+        <member name="P:FISCA.Authentication.DSAServices.PhysicalSchemaVersion">
+            <summary>
+            實體資料庫 Schema 版本。
+            </summary>
+        </member>
+        <member name="P:FISCA.Authentication.DSAServices.IsLogined">
+            <summary>
+            使用者已經成功登入系統
+            </summary>
+        </member>
         <member name="M:FISCA.Authentication.DSAServices.CallService(System.String,FISCA.DSAUtil.DSRequest)">
             <summary>
             呼叫 DSA Service。
@@ -143,53 +191,6 @@
             <param name="req">DSRequest</param>
             <returns>DSResponse</returns>
         </member>
-        <member name="M:FISCA.Authentication.DSAServices.ComputePasswordHash(System.String)">
-            <summary>
-            將密碼從明碼轉換為暗碼
-            </summary>
-            <param name="password">明碼</param>
-            <returns>轉碼後的暗碼</returns>
-        </member>
-        <member name="P:FISCA.Authentication.DSAServices.DefaultConnection">
-            <summary>
-            取得登入系統的(不建議使用)。
-            </summary>
-        </member>
-        <member name="P:FISCA.Authentication.DSAServices.AdminConnection">
-            <summary>
-            Admin 的連線(Internal Use)。
-            </summary>
-        </member>
-        <member name="P:FISCA.Authentication.DSAServices.DefaultDataSource">
-            <summary>
-            使用者登入之預設連線位置。
-            </summary>
-        </member>
-        <member name="P:FISCA.Authentication.DSAServices.PassportToken">
-            <summary>
-            取得目前使用者的 PassportToken。
-            </summary>
-        </member>
-        <member name="P:FISCA.Authentication.DSAServices.PassportTokenInternal">
-            <summary>
-            取得使用者的 PassportToken，內部使用，最原始的 Passport 物件。
-            </summary>
-        </member>
-        <member name="P:FISCA.Authentication.DSAServices.IsSysAdmin">
-            <summary>
-            取得登入帳號是否為系統管理員帳號
-            </summary>
-        </member>
-        <member name="P:FISCA.Authentication.DSAServices.PhysicalSchemaVersion">
-            <summary>
-            實體資料庫 Schema 版本。
-            </summary>
-        </member>
-        <member name="P:FISCA.Authentication.DSAServices.IsLogined">
-            <summary>
-            使用者已經成功登入系統
-            </summary>
-        </member>
         <member name="P:FISCA.Authentication.DSAServices.UserAccount">
             <summary>
             登入帳號
@@ -205,6 +206,13 @@
             登入的主機名稱。
             </summary>
         </member>
+        <member name="M:FISCA.Authentication.DSAServices.ComputePasswordHash(System.String)">
+            <summary>
+            將密碼從明碼轉換為暗碼
+            </summary>
+            <param name="password">明碼</param>
+            <returns>轉碼後的暗碼</returns>
+        </member>
         <member name="T:FISCA.Authentication.LeaveOnErrorAttribute">
             <summary>
             標上此屬性的方法或類別中的方法在CallService時若發生Exception則不會理會錯誤
@@ -212,7 +220,7 @@
         </member>
         <member name="T:FISCA.Authentication.Properties.Resources">
             <summary>
-              用於查詢當地語系化字串等的強型別資源類別
+              用於查詢當地語系化字串等的強類型資源類別。
             </summary>
         </member>
         <member name="P:FISCA.Authentication.Properties.Resources.ResourceManager">
@@ -223,12 +231,27 @@
         <member name="P:FISCA.Authentication.Properties.Resources.Culture">
             <summary>
               覆寫目前執行緒的 CurrentUICulture 屬性，對象是所有
-              使用這個強型別資源類別的資源查閱。
+              使用這個強類型資源類別的資源查閱。
             </summary>
         </member>
         <member name="P:FISCA.Authentication.Properties.Resources.LicenseDecryptoFail">
             <summary>
               查詢類似 電腦授權錯誤，需請系統管理員重新設定電腦的授權。 的當地語系化字串。
+            </summary>
+        </member>
+        <member name="P:FISCA.Authentication.Properties.Resources.寬箭頭">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:FISCA.Authentication.Properties.Resources.寬箭頭陰影">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:FISCA.Authentication.Properties.Resources.紅箭頭">
+            <summary>
+              查詢類型 System.Drawing.Bitmap 的當地語系化資源。
             </summary>
         </member>
         <member name="T:FISCA.Authentication.VersionNotSupportException">

@@ -101,6 +101,7 @@ namespace Manager
                 arg =>
                 {
                     Connection conn = new Connection();
+                    conn.EnableSecureTunnel = true;
                     conn.Connect(arg.Arguments.AccessPointUrl, "", arg.Arguments.UserName, arg.Arguments.Password);
 
                     try
